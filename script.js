@@ -9,36 +9,46 @@ const firebaseConfig = {
   appId: "1:288377432780:web:904bb112a587b1393fb069"
 };
 
-// Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Send Destination
-function sendDestination(location) {
-  db.ref("commands").set({
-    destination: location,
-    timestamp: Date.now()
-  });
+// Map Setup
+const map = L.map("map").setView([-3.3647, 36.6788], 17);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+// Named Points
+const locations = {
+  "Ufundi Tower": [-3.363675, 36.677285],
+  "Irrigation Building": [-3.365418, 36.678761],
+  "High Class": [-3.364119, 36.679867],
+  "Ecowater": [-3.365265, 36.678846],
+  "Hostel 1": [-3.364799, 36.679811]
+};
+
+for (const [name, coords] of Object.entries(locations)) {
+  L.marker(coords).addTo(map).bindPopup(name);
 }
 
-// Map Setup
-const map = L.map('map').setView([-3.3869, 36.68299], 17);  // Centered on Arusha Tech
+// Live Marker for the Car
+const carMarker = L.marker([-3.3647, 36.6788], { color: "red" }).addTo(map);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap'
-}).addTo(map);
-
-// Marker
-const carMarker = L.marker([-3.3869, 36.68299]).addTo(map).bindPopup("Delivery Car");
-
-// Realtime Location Update
-db.ref("location").on("value", (snapshot) => {
-  const data = snapshot.val();
-  if (data) {
-    const lat = data.lat;
-    const lng = data.lng;
-    carMarker.setLatLng([lat, lng]);
-    carMarker.getPopup().setContent(`Car is here<br>Lat: ${lat}<br>Lng: ${lng}`);
-    map.panTo([lat, lng]);
+// Update Location from Firebase
+firebase.database().ref("car/location").on("value", (snapshot) => {
+  const loc = snapshot.val();
+  if (loc && loc.lat && loc.lon) {
+    carMarker.setLatLng([loc.lat, loc.lon]);
+    map.setView([loc.lat, loc.lon], 17);
   }
 });
+
+// Send Destination to Firebase
+function sendDestination(name) {
+  const coords = locations[name];
+  if (!coords) return;
+  firebase.database().ref("car/command").set({
+    destination: name,
+    lat: coords[0],
+    lon: coords[1]
+  });
+  alert(`Sent destination: ${name}`);
+}
