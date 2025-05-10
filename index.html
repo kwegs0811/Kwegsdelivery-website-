@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KWEGS Delivery Car Map</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <meta charset="UTF-8">
+  <title>Kwegs Delivery Car</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>KWEGS Delivery Car Map</h1>
-  <div id="map"></div>
-  <div class="controls">
-    <h2>Select Destination</h2>
-    <button onclick="sendDestination('Ufundi Tower')">Ufundi Tower</button>
-    <button onclick="sendDestination('Irrigation Building')">Irrigation Building</button>
-    <button onclick="sendDestination('High Class')">High Class</button>
-    <button onclick="sendDestination('Ecowater')">Ecowater</button>
-    <button onclick="sendDestination('Hostel 1')">Hostel 1</button>
-  </div>
-
+  <h1>Kwegs Delivery Car</h1>
+  <div id="map" style="height: 400px; width: 100%;"></div>
+  <select id="destination">
+    <option value="Hostel 1">Hostel 1</option>
+    <option value="Ufundi Tower">Ufundi Tower</option>
+    <option value="Irrigation House">Irrigation House</option>
+    <option value="Ecowater">Ecowater</option>
+    <option value="High Class">High Class</option>
+  </select>
+  <button onclick="sendDestination()">Send Delivery</button>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
