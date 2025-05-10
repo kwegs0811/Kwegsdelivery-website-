@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>KWEGS Delivery Car</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
-  <!-- Leaflet Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KWEGS Delivery Car Map</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
 <body>
-  <h1>KWEGS Delivery Car Control</h1>
-  
+  <h1>KWEGS Delivery Car Map</h1>
   <div id="map"></div>
-
-  <div id="controls">
-    <button onclick="sendDestination('Ufundi Tower')">Go to Ufundi Tower</button>
-    <button onclick="sendDestination('High Class')">Go to High Class</button>
-    <button onclick="sendDestination('Irrigation House')">Go to Irrigation House</button>
-    <button onclick="sendDestination('Ecowater')">Go to Ecowater</button>
-    <button onclick="sendDestination('Hostel 1')">Go to Hostel 1</button>
+  <div class="controls">
+    <h2>Select Destination</h2>
+    <button onclick="sendDestination('Ufundi Tower')">Ufundi Tower</button>
+    <button onclick="sendDestination('Irrigation Building')">Irrigation Building</button>
+    <button onclick="sendDestination('High Class')">High Class</button>
+    <button onclick="sendDestination('Ecowater')">Ecowater</button>
+    <button onclick="sendDestination('Hostel 1')">Hostel 1</button>
   </div>
 
   <script src="script.js"></script>
