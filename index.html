@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KWEGS Delivery Car</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <h1>KWEGS Delivery Car Control</h1>
+  
+  <div id="map"></div>
+
+  <div id="controls">
+    <button onclick="sendDestination('Ufundi Tower')">Go to Ufundi Tower</button>
+    <button onclick="sendDestination('High Class')">Go to High Class</button>
+    <button onclick="sendDestination('Irrigation House')">Go to Irrigation House</button>
+    <button onclick="sendDestination('Ecowater')">Go to Ecowater</button>
+    <button onclick="sendDestination('Hostel 1')">Go to Hostel 1</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
