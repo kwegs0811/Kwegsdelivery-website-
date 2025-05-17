@@ -1,23 +1,21 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Kwegs Delivery Car</title>
+  <title>KWEGS Delivery Map</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 </head>
 <body>
-  <h1>Kwegs Delivery Car</h1>
-  <div id="map" style="height: 400px; width: 100%;"></div>
-  <select id="destination">
-    <option value="Hostel 1">Hostel 1</option>
-    <option value="Ufundi Tower">Ufundi Tower</option>
-    <option value="Irrigation House">Irrigation House</option>
-    <option value="Ecowater">Ecowater</option>
-    <option value="High Class">High Class</option>
-  </select>
-  <button onclick="sendDestination()">Send Delivery</button>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
-  <script src="script.js"></script>
+  <h1>KWEGS Car Control</h1>
+  <div id="map"></div>
+  <div id="controls">
+    <button onclick="sendCommand('A')">Go to A</button>
+    <button onclick="sendCommand('B')">Go to B</button>
+    <button onclick="sendCommand('C')">Go to C</button>
+    <button onclick="sendCommand('D')">Go to D</button>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
